@@ -1,6 +1,6 @@
 # VS Code website footer
 
-The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout. The site has a single theme, and the footer takes on the site's own colours and type.
+The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout, and takes on the site's own colours and type.
 
 **Replacing the footer with a coding agent?** Point the agent at [AGENTS.md](AGENTS.md). It has step-by-step instructions and a checklist.
 
@@ -50,7 +50,7 @@ AGENTS.md     instructions for replacing the current footer on the site
 
 **Type and colour**
 
-- The footer uses the website's existing colours and font. There is no separate dark theme.
+- The footer uses the website's existing colours and font.
 - Every colour and the font are tokens at the top of `footer.css`. The values there match the mockups and the images in this repo; when the footer goes into the site, they are replaced with the site's own values.
 - Sizes are part of the design: column headings are 13 px semibold, links are 13 px on desktop and 14 px inside the mobile groups, and small print is 12 px.
 - The Your Privacy Choices icon keeps its official blue and white.

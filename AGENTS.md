@@ -49,7 +49,7 @@ Replace the current footer with the markup from `footer.html`:
 - Add `footer.css` to the site's stylesheet pipeline the way other component styles are added.
 - Remove the current footer's styles, but only rules that nothing else on the site uses. Search before deleting.
 - Every class starts with `ft-` and every rule is scoped under `.ft`. Search the site for existing `ft-` classes and `--ft-` custom properties. If any collide, rename the footer's prefix consistently in both files.
-- **Colours and font.** The site has a single theme, with no dark mode. The footer must take on the site's existing colours and type. Set each token at the top of `footer.css` to the site's own value: use the site's CSS variables or design tokens where they exist, otherwise the colours the current footer uses. Map them by role:
+- **Colours and font.** The footer must take on the site's existing colours and type. Set each token at the top of `footer.css` to the site's own value: use the site's CSS variables or design tokens where they exist, otherwise the colours the current footer uses. Map them by role:
   - `--ft-bg`: the current footer's background
   - `--ft-ink`: headings and primary text
   - `--ft-ink-soft`, `--ft-muted`: secondary link and small-print text
@@ -57,7 +57,7 @@ Replace the current footer with the markup from `footer.html`:
   - `--ft-rule`, `--ft-rule-strong`: the site's divider and border colours
   - `--ft-sans`: the site's font stack
 
-  Keep the sizes, weights and spacing from `footer.css`; only the colours and font family change. Do not add a dark theme. Check that text still meets WCAG AA contrast (4.5:1) against the new background.
+  Keep the sizes, weights and spacing from `footer.css`; only the colours and font family change. Check that text still meets WCAG AA contrast (4.5:1) against the new background.
 - **Breakpoint.** The layout switches at 760 px. If the site has a standard breakpoint close to that, you may use it. Check that the desktop columns still fit at the narrowest desktop width.
 
 ### 5. Do not change

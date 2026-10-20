@@ -7,9 +7,9 @@
 
 /* ---------------------------------------------------------------- tokens */
 
-/* The site has a single theme. These values match the design mockups; when
-   the footer goes into the site, swap them for the site's own colours and
-   font (its variables, or the colours the current footer uses). */
+/* These values match the design mockups. When the footer goes into the
+   site, swap them for the site's own colours and font (its variables, or
+   the colours the current footer uses). */
 :root {
   --ft-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 
