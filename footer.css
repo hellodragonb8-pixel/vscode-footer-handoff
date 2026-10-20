@@ -7,6 +7,9 @@
 
 /* ---------------------------------------------------------------- tokens */
 
+/* The site has a single theme. These values match the design mockups; when
+   the footer goes into the site, swap them for the site's own colours and
+   font (its variables, or the colours the current footer uses). */
 :root {
   --ft-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 
@@ -19,33 +22,9 @@
   --ft-accent: #005fb8;      /* link hover */
   --ft-focus: #005fb8;       /* keyboard focus ring */
 
-  /* Fixed colours of the official Your Privacy Choices icon. Do not theme. */
+  /* Fixed colours of the official Your Privacy Choices icon. Do not map to site colours. */
   --pc-blue: #0066ff;
   --pc-light: #ffffff;
-}
-
-/* Dark theme: follows the OS unless the page sets data-theme on <html>. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ft-bg: #18181a;
-    --ft-ink: #ececee;
-    --ft-ink-soft: #c9c9cd;
-    --ft-muted: #a8a8ad;
-    --ft-rule: #323236;
-    --ft-rule-strong: #46464b;
-    --ft-accent: #4daafc;
-    --ft-focus: #4daafc;
-  }
-}
-:root[data-theme="dark"] {
-  --ft-bg: #18181a;
-  --ft-ink: #ececee;
-  --ft-ink-soft: #c9c9cd;
-  --ft-muted: #a8a8ad;
-  --ft-rule: #323236;
-  --ft-rule-strong: #46464b;
-  --ft-accent: #4daafc;
-  --ft-focus: #4daafc;
 }
 
 /* ------------------------------------------------------------------ base */

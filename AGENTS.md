@@ -7,9 +7,8 @@ Your task is to replace the footer on the VS Code website (code.visualstudio.com
 | File | Use |
 | --- | --- |
 | `footer.html` | The new footer markup. Copy only the `<footer>` element between the `FOOTER START` and `FOOTER END` comments. The rest of the file is a demo page. |
-| `footer.css` | Every style the footer needs: colour tokens, desktop layout, and mobile layout (`@media (max-width: 760px)`). |
-| `images/desktop.png`, `images/mobile.png` | How the result must look in the light theme, at 1280 px and 390 px. |
-| `images/desktop-dark.png`, `images/mobile-dark.png` | The same in the dark theme. |
+| `footer.css` | Every style the footer needs: colour and font tokens, desktop layout, and mobile layout (`@media (max-width: 760px)`). |
+| `images/desktop.png`, `images/mobile.png` | The layout to match, at 1280 px and 390 px. Colours may differ once you apply the site's own (step 4). |
 | `images/current-footer.png` | The footer you are replacing, so you can recognise it. |
 
 The footer needs no JavaScript. The mobile groups are native `<details>` / `<summary>` elements.
@@ -50,14 +49,21 @@ Replace the current footer with the markup from `footer.html`:
 - Add `footer.css` to the site's stylesheet pipeline the way other component styles are added.
 - Remove the current footer's styles, but only rules that nothing else on the site uses. Search before deleting.
 - Every class starts with `ft-` and every rule is scoped under `.ft`. Search the site for existing `ft-` classes and `--ft-` custom properties. If any collide, rename the footer's prefix consistently in both files.
-- **Theme.** Dark values follow `prefers-color-scheme`, and `data-theme="light"` / `data-theme="dark"` on `<html>` overrides it. If the site switches themes another way (a class on `<html>` or `<body>`, or its own colour variables), change those selectors to match the site's mechanism. Keep the colour values.
-- **Font.** If the site defines its own font stack, point `--ft-sans` at it.
+- **Colours and font.** The site has a single theme, with no dark mode. The footer must take on the site's existing colours and type. Set each token at the top of `footer.css` to the site's own value: use the site's CSS variables or design tokens where they exist, otherwise the colours the current footer uses. Map them by role:
+  - `--ft-bg`: the current footer's background
+  - `--ft-ink`: headings and primary text
+  - `--ft-ink-soft`, `--ft-muted`: secondary link and small-print text
+  - `--ft-accent`, `--ft-focus`: the site's link hover and focus colours
+  - `--ft-rule`, `--ft-rule-strong`: the site's divider and border colours
+  - `--ft-sans`: the site's font stack
+
+  Keep the sizes, weights and spacing from `footer.css`; only the colours and font family change. Do not add a dark theme. Check that text still meets WCAG AA contrast (4.5:1) against the new background.
 - **Breakpoint.** The layout switches at 760 px. If the site has a standard breakpoint close to that, you may use it. Check that the desktop columns still fit at the narrowest desktop width.
 
 ### 5. Do not change
 
 - Your Privacy Choices and Consumer Health Privacy stay visible at every width. On mobile they are separate rows below the groups, never inside a collapsed group.
-- The Your Privacy Choices icon keeps its official artwork and colours (`--pc-blue`, `--pc-light`) in both themes.
+- The Your Privacy Choices icon keeps its official artwork and colours (`--pc-blue`, `--pc-light`). Do not map these to site colours.
 - The license agreement line is shown on desktop and hidden on mobile. This was decided on purpose, not by mistake.
 - The groups, their order and the links inside them, unless step 2 adds an item.
 
@@ -65,13 +71,13 @@ Replace the current footer with the markup from `footer.html`:
 
 Run the site locally and check each item:
 
-- [ ] At 1280 px, the footer matches `images/desktop.png`: logo on the left, four columns on the right, and Consumer Health Privacy, the agreement and Your Privacy Choices on one line at the bottom.
-- [ ] At 390 px, it matches `images/mobile.png`: logo, four collapsed groups, then the Consumer Health Privacy and Your Privacy Choices rows. There is no agreement line.
+- [ ] At 1280 px, the layout matches `images/desktop.png`: logo on the left, four columns on the right, and Consumer Health Privacy, the agreement and Your Privacy Choices on one line at the bottom.
+- [ ] At 390 px, the layout matches `images/mobile.png`: logo, four collapsed groups, then the Consumer Health Privacy and Your Privacy Choices rows. There is no agreement line.
 - [ ] At widths between 761 px and 1024 px, the desktop columns do not overlap the logo or wrap badly.
 - [ ] At 320 px, there is no horizontal scrolling.
 - [ ] Each mobile group opens and closes with a click, a tap, and Enter or Space. Its chevron turns.
 - [ ] You can reach every link with Tab, and the focus ring is visible.
-- [ ] In the dark theme, it matches `images/desktop-dark.png` and `images/mobile-dark.png`.
+- [ ] Colours and font match the rest of the site, and text meets WCAG AA contrast.
 - [ ] Your Privacy Choices still opens the consent experience it opened before, if it opened one.
 - [ ] Every link goes to the same place as before, or to its new destination in `footer.html`.
 - [ ] No old footer markup, styles or scripts remain, and nothing else on the site broke.
@@ -83,5 +89,6 @@ Summarise for the reviewer:
 
 - which files you changed
 - any URL or wiring you carried over from the old footer (step 2)
+- the site colours and font you mapped to each token (step 4)
 - any deviation from this repository, and why
 - anything you could not verify

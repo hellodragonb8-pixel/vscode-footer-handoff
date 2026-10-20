@@ -1,6 +1,6 @@
 # VS Code website footer
 
-The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout, and a light and dark theme.
+The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout. The site has a single theme, and the footer takes on the site's own colours and type.
 
 **Replacing the footer with a coding agent?** Point the agent at [AGENTS.md](AGENTS.md). It has step-by-step instructions and a checklist.
 
@@ -8,7 +8,7 @@ The new footer for the VS Code website (code.visualstudio.com), ready to replace
 | --- | --- |
 | ![Footer at desktop width](images/desktop.png) | ![Footer at mobile width](images/mobile.png) |
 
-Dark theme: [desktop](images/desktop-dark.png), [mobile](images/mobile-dark.png). The footer it replaces: [current footer](images/current-footer.png).
+The footer it replaces: [current footer](images/current-footer.png).
 
 ## Viewing
 
@@ -18,7 +18,7 @@ Open `index.html` in a browser. It shows the footer at 1280 px and at 390 px sid
 
 ```
 footer.html   the footer markup, between FOOTER START / FOOTER END comments
-footer.css    all footer styles: colour tokens, desktop layout, mobile layout
+footer.css    all footer styles: colour and font tokens, desktop layout, mobile layout
 index.html    preview page (desktop and mobile frames); not part of the footer
 images/       reference renders of the new footer, and a screenshot of the current one
 AGENTS.md     instructions for replacing the current footer on the site
@@ -50,9 +50,10 @@ AGENTS.md     instructions for replacing the current footer on the site
 
 **Type and colour**
 
-- Type is Segoe UI Variable Text, falling back to Segoe UI and the system font.
-- Column headings are 13 px semibold. Links are 13 px on desktop and 14 px inside the mobile groups. Small print is 12 px.
-- Every colour is a token at the top of `footer.css`, with dark-theme values beside it. The Your Privacy Choices icon keeps its official blue and white in both themes.
+- The footer uses the website's existing colours and font. There is no separate dark theme.
+- Every colour and the font are tokens at the top of `footer.css`. The values there match the mockups and the images in this repo; when the footer goes into the site, they are replaced with the site's own values.
+- Sizes are part of the design: column headings are 13 px semibold, links are 13 px on desktop and 14 px inside the mobile groups, and small print is 12 px.
+- The Your Privacy Choices icon keeps its official blue and white.
 
 ## Before shipping
 
