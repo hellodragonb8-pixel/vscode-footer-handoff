@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VS Code Footer</title>
+  <style>
+    /* Preview page only. The footer itself is footer.html + footer.css. */
+    :root {
+      --pg-bg: #f7f7f8;
+      --pg-ink: #1b1b1d;
+      --pg-muted: #626268;
+      --pg-rule: #dedee2;
+      color-scheme: light dark;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --pg-bg: #0f0f10; --pg-ink: #ececee; --pg-muted: #9d9da3; --pg-rule: #2b2b2f; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px clamp(16px, 3vw, 40px) 64px;
+      background: var(--pg-bg);
+      color: var(--pg-ink);
+      font: 14px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+    h1 { margin: 0; font-size: 22px; font-weight: 600; }
+    header p { margin: 4px 0 32px; color: var(--pg-muted); max-width: 70ch; }
+    .views { display: grid; gap: 32px; }
+    figure { margin: 0; min-width: 0; }
+    figcaption {
+      margin-bottom: 8px;
+      font: 11px/1 ui-monospace, "Cascadia Mono", Consolas, monospace;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--pg-muted);
+    }
+    .scroll { overflow-x: auto; border: 1px solid var(--pg-rule); border-radius: 10px; }
+    iframe { display: block; border: 0; }
+    .desk iframe { width: 1280px; height: 420px; }
+    .mob iframe { width: 390px; max-width: 100%; height: 760px; border: 1px solid var(--pg-rule); border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VS Code footer</h1>
+    <p>The new footer at desktop width (1280&nbsp;px) and mobile width (390&nbsp;px). Both frames load <code>footer.html</code>, so this is the real markup and CSS. On mobile, tap a group to open it. Dark mode follows your system setting.</p>
+  </header>
+  <div class="views">
+    <figure class="desk">
+      <figcaption>Desktop · 1280</figcaption>
+      <div class="scroll"><iframe src="footer.html" title="Footer at desktop width"></iframe></div>
+    </figure>
+    <figure class="mob">
+      <figcaption>Mobile · 390</figcaption>
+      <iframe src="footer.html" title="Footer at mobile width"></iframe>
+    </figure>
+  </div>
+</body>
+</html>

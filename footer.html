@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VS Code footer</title>
+  <link rel="stylesheet" href="footer.css">
+  <!-- Demo page only: fills the window with the footer colour. Not part of the footer. -->
+  <style>html, body { margin: 0; background: var(--ft-bg); }</style>
+</head>
+<body>
+
+<!-- ============================== FOOTER START ============================== -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <a class="ft-ms" href="https://www.microsoft.com" aria-label="Microsoft">
+        <svg class="ft-mark" viewBox="0 0 23 23" aria-hidden="true" focusable="false"><rect width="11" height="11"/><rect x="12" width="11" height="11"/><rect y="12" width="11" height="11"/><rect x="12" y="12" width="11" height="11"/></svg>
+        <span class="ft-word">Microsoft</span>
+      </a>
+
+      <!-- Desktop: four columns. Hidden at 760px and below. -->
+      <div class="ft-desk">
+        <section class="ft-col">
+          <h3 class="ft-h">Community</h3>
+          <ul class="ft-links" role="list" aria-label="Community">
+            <li><a href="https://github.com/microsoft/vscode">GitHub</a></li>
+            <li><a href="https://www.reddit.com/r/vscode/">Reddit</a></li>
+            <li><a href="https://x.com/code">X</a></li>
+            <li><a href="https://bsky.app/profile/vscode.dev">Bluesky</a></li>
+            <li><a href="https://www.linkedin.com/showcase/vs-code/">LinkedIn</a></li>
+          </ul>
+        </section>
+        <section class="ft-col">
+          <h3 class="ft-h">Watch &amp; listen</h3>
+          <ul class="ft-links" role="list" aria-label="Watch and listen">
+            <li><a href="https://www.youtube.com/@code">YouTube</a></li>
+            <li><a href="https://www.vscodepodcast.com/">Podcast</a></li>
+            <li><a href="https://www.tiktok.com/@vscode">TikTok</a></li>
+            <li><a href="https://www.instagram.com/vscode/">Instagram</a></li>
+          </ul>
+        </section>
+        <section class="ft-col">
+          <h3 class="ft-h">Legal</h3>
+          <ul class="ft-links" role="list" aria-label="Legal">
+            <li><a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy</a></li>
+            <li><a href="https://www.microsoft.com/legal/terms-of-use">Terms of Use</a></li>
+          </ul>
+        </section>
+        <section class="ft-col">
+          <h3 class="ft-h">Help</h3>
+          <ul class="ft-links" role="list" aria-label="Help">
+            <li><a href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d">Support</a></li>
+            <li><a href="/License">License</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Mobile: the same four groups as expandable rows. Hidden above 760px. -->
+      <div class="ft-mob">
+        <details>
+          <summary>Community</summary>
+          <ul class="ft-links" role="list" aria-label="Community">
+            <li><a href="https://github.com/microsoft/vscode">GitHub</a></li>
+            <li><a href="https://www.reddit.com/r/vscode/">Reddit</a></li>
+            <li><a href="https://x.com/code">X</a></li>
+            <li><a href="https://bsky.app/profile/vscode.dev">Bluesky</a></li>
+            <li><a href="https://www.linkedin.com/showcase/vs-code/">LinkedIn</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Watch &amp; listen</summary>
+          <ul class="ft-links" role="list" aria-label="Watch and listen">
+            <li><a href="https://www.youtube.com/@code">YouTube</a></li>
+            <li><a href="https://www.vscodepodcast.com/">Podcast</a></li>
+            <li><a href="https://www.tiktok.com/@vscode">TikTok</a></li>
+            <li><a href="https://www.instagram.com/vscode/">Instagram</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Legal</summary>
+          <ul class="ft-links" role="list" aria-label="Legal">
+            <li><a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy</a></li>
+            <li><a href="https://www.microsoft.com/legal/terms-of-use">Terms of Use</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Help</summary>
+          <ul class="ft-links" role="list" aria-label="Help">
+            <li><a href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d">Support</a></li>
+            <li><a href="/License">License</a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <!-- Desktop: one line (health link left, agreement centred, choices right).
+         Mobile: health and choices as rows; the agreement line is hidden. -->
+    <div class="ft-base">
+      <a class="ft-health" href="https://go.microsoft.com/fwlink/?linkid=2259814">Consumer Health Privacy</a>
+      <p class="ft-agree">By using VS Code, you agree to its <a href="/License">license</a> and <a href="https://go.microsoft.com/fwlink/?LinkId=521839">privacy statement</a>.</p>
+      <a class="ft-choices" href="https://aka.ms/yourcaliforniaprivacychoices">
+        <svg class="ft-pc" viewBox="0 0 30 14" aria-hidden="true" focusable="false"><path fill="var(--pc-light)" d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"/><path fill="var(--pc-blue)" d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"/><path fill="var(--pc-light)" d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8s-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0s-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8s.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"/><path fill="var(--pc-blue)" d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8s.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"/></svg>
+        <span>Your Privacy Choices</span>
+      </a>
+    </div>
+  </div>
+</footer>
+<!-- =============================== FOOTER END =============================== -->
+
+</body>
+</html>

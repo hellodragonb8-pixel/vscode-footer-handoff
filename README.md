@@ -1,0 +1,61 @@
+# VS Code website footer
+
+The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout, and a light and dark theme.
+
+**Replacing the footer with a coding agent?** Point the agent at [AGENTS.md](AGENTS.md). It has step-by-step instructions and a checklist.
+
+| Desktop | Mobile |
+| --- | --- |
+| ![Footer at desktop width](images/desktop.png) | ![Footer at mobile width](images/mobile.png) |
+
+Dark theme: [desktop](images/desktop-dark.png), [mobile](images/mobile-dark.png). The footer it replaces: [current footer](images/current-footer.png).
+
+## Viewing
+
+Open `index.html` in a browser. It shows the footer at 1280 px and at 390 px side by side. No build step or server is needed. Open `footer.html` on its own and resize the window to see the layout switch at 760 px.
+
+## Files
+
+```
+footer.html   the footer markup, between FOOTER START / FOOTER END comments
+footer.css    all footer styles: colour tokens, desktop layout, mobile layout
+index.html    preview page (desktop and mobile frames); not part of the footer
+images/       reference renders of the new footer, and a screenshot of the current one
+AGENTS.md     instructions for replacing the current footer on the site
+```
+
+`footer.html` and `footer.css` are the whole footer. It needs no JavaScript.
+
+## Design
+
+**Desktop (wider than 760 px)**
+
+- The Microsoft logo and wordmark sit on the left.
+- Four link columns sit toward the right, each 150 px wide:
+  - **Community:** GitHub, Reddit, X, Bluesky, LinkedIn
+  - **Watch & listen:** YouTube, Podcast, TikTok, Instagram
+  - **Legal:** Privacy, Terms of Use
+  - **Help:** Support, License
+- One line runs along the bottom, 112 px below the columns:
+  - **Consumer Health Privacy** on the left, under the logo
+  - the license agreement ("By using VS Code, you agree to its license and privacy statement.") centred
+  - **Your Privacy Choices** with its official icon on the right
+
+**Mobile (760 px and narrower)**
+
+- The logo comes first.
+- The four groups become expandable rows, separated by thin rules. They use native `<details>` / `<summary>` elements, so no script is needed.
+- **Consumer Health Privacy** and **Your Privacy Choices** follow as their own rows. They are always visible, never inside a collapsed group.
+- The license agreement line is not shown on mobile.
+
+**Type and colour**
+
+- Type is Segoe UI Variable Text, falling back to Segoe UI and the system font.
+- Column headings are 13 px semibold. Links are 13 px on desktop and 14 px inside the mobile groups. Small print is 12 px.
+- Every colour is a token at the top of `footer.css`, with dark-theme values beside it. The Your Privacy Choices icon keeps its official blue and white in both themes.
+
+## Before shipping
+
+- **Privacy links stay visible.** Your Privacy Choices (California's CCPA opt-out) and Consumer Health Privacy (Washington's My Health My Data Act) must stay visible on every page and at every width. Keep the official Your Privacy Choices icon unchanged.
+- **Agreement line on mobile.** The license agreement line is hidden on mobile by design. Confirm that with Microsoft privacy or legal before launch.
+- **Social links.** Check the social URLs against the live footer. Some were written by hand.

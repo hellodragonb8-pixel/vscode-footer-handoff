@@ -1,0 +1,154 @@
+/*
+ * VS Code website footer.
+ * Desktop layout above 760px, mobile layout at 760px and below.
+ * Every class starts with "ft-" and every rule is scoped under .ft, so the
+ * footer can sit next to existing site styles without collisions.
+ */
+
+/* ---------------------------------------------------------------- tokens */
+
+:root {
+  --ft-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --ft-bg: #efeff0;          /* footer surface */
+  --ft-ink: #1f1f1f;         /* headings, wordmark, mobile rows */
+  --ft-ink-soft: #444448;    /* column links */
+  --ft-muted: #5b5b5e;       /* small print */
+  --ft-rule: #d3d3d6;        /* mobile dividers */
+  --ft-rule-strong: #b6b6ba; /* underline on links inside the agreement line */
+  --ft-accent: #005fb8;      /* link hover */
+  --ft-focus: #005fb8;       /* keyboard focus ring */
+
+  /* Fixed colours of the official Your Privacy Choices icon. Do not theme. */
+  --pc-blue: #0066ff;
+  --pc-light: #ffffff;
+}
+
+/* Dark theme: follows the OS unless the page sets data-theme on <html>. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ft-bg: #18181a;
+    --ft-ink: #ececee;
+    --ft-ink-soft: #c9c9cd;
+    --ft-muted: #a8a8ad;
+    --ft-rule: #323236;
+    --ft-rule-strong: #46464b;
+    --ft-accent: #4daafc;
+    --ft-focus: #4daafc;
+  }
+}
+:root[data-theme="dark"] {
+  --ft-bg: #18181a;
+  --ft-ink: #ececee;
+  --ft-ink-soft: #c9c9cd;
+  --ft-muted: #a8a8ad;
+  --ft-rule: #323236;
+  --ft-rule-strong: #46464b;
+  --ft-accent: #4daafc;
+  --ft-focus: #4daafc;
+}
+
+/* ------------------------------------------------------------------ base */
+
+.ft {
+  --pad: clamp(20px, 4vw, 40px);
+  background: var(--ft-bg);
+  color: var(--ft-ink);
+  font: 14px/1.5 var(--ft-sans);
+  padding-block: 48px 40px;
+}
+.ft-in { max-width: 1200px; margin-inline: auto; padding-inline: var(--pad); }
+.ft *, .ft *::before, .ft *::after { box-sizing: border-box; }
+.ft p, .ft h3, .ft ul { margin: 0; padding: 0; }
+.ft ul { list-style: none; }
+
+.ft a { color: inherit; text-decoration: none; text-underline-offset: 3px; }
+.ft a:hover { color: var(--ft-accent); text-decoration: underline; }
+.ft a:focus-visible, .ft summary:focus-visible {
+  outline: 2px solid var(--ft-focus);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Microsoft logo and wordmark. */
+.ft-ms { display: inline-flex; align-items: center; gap: 10px; color: var(--ft-ink); }
+.ft .ft-ms:hover { color: var(--ft-ink); text-decoration: none; }
+.ft-mark { display: block; width: 26px; height: 26px; flex: none; fill: currentColor; }
+.ft-word { font-size: 21px; font-weight: 600; letter-spacing: -.01em; }
+
+/* Your Privacy Choices: official icon, kept at its 30:14 proportions. */
+.ft-choices { display: inline-flex; align-items: center; gap: 8px; }
+.ft-pc { display: block; width: 24px; height: 11.2px; flex: none; }
+
+/* License agreement: small, quiet, with a faint underline on its links. */
+.ft-agree { font-size: 12px; color: var(--ft-muted); text-align: center; text-wrap: balance; }
+.ft-agree a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--ft-rule-strong); }
+.ft-agree a:hover { color: var(--ft-ink); text-decoration-color: currentColor; }
+
+/* --------------------------------------------------------------- desktop */
+
+/* Logo on the left, four link columns toward the right. */
+.ft .ft-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 48px; }
+.ft .ft-desk { display: grid; grid-template-columns: 150px 150px 150px auto; }
+.ft .ft-mob { display: none; }
+
+/* Tight, even rhythm: link rows about 26px apart, and each heading sits
+   one row above its list rather than floating over it. */
+.ft .ft-col { display: grid; gap: 8px; align-content: start; line-height: 1.4; }
+.ft .ft-h { font-size: 13px; font-weight: 600; }
+.ft .ft-links { display: grid; gap: 8px; align-content: start; font-size: 13px; }
+.ft .ft-links a { color: var(--ft-ink-soft); }
+
+/* One bottom line: Consumer Health Privacy under the logo, the agreement
+   centred on the footer, Your Privacy Choices at the right. */
+.ft .ft-base { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px 40px; margin-top: 112px; }
+.ft .ft-base > .ft-health { grid-column: 1; grid-row: 1; justify-self: start; font-size: 12px; color: var(--ft-muted); }
+.ft .ft-base > .ft-agree { grid-column: 2; grid-row: 1; }
+.ft .ft-base > .ft-choices { grid-column: 3; grid-row: 1; justify-self: end; font-size: 12px; color: var(--ft-muted); }
+
+/* ---------------------------------------------------------------- mobile */
+
+@media (max-width: 760px) {
+  .ft .ft-top { flex-direction: column; align-items: stretch; gap: 36px; }
+  .ft .ft-top > .ft-ms { align-self: flex-start; }
+
+  /* The columns fold into expandable groups. */
+  .ft .ft-desk { display: none; }
+  .ft .ft-mob { display: block; border-top: 1px solid var(--ft-rule); }
+  .ft details { border-bottom: 1px solid var(--ft-rule); }
+  .ft summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  .ft summary::-webkit-details-marker { display: none; }
+  .ft summary::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    rotate: 45deg;
+    translate: 0 -2px;
+    transition: rotate .15s ease;
+  }
+  .ft details[open] summary::after { rotate: 225deg; translate: 0 2px; }
+  .ft details > .ft-links { padding-bottom: 20px; gap: 14px; font-size: 14px; line-height: 1.5; }
+
+  /* Consumer Health Privacy and Your Privacy Choices read as two more rows
+     under the groups, always visible. The agreement line is desktop only. */
+  .ft .ft-base { display: flex; flex-direction: column; align-items: stretch; margin-top: 0; }
+  .ft .ft-base > .ft-health { padding-block: 20px; border-bottom: 1px solid var(--ft-rule); font-size: 16px; font-weight: 600; color: var(--ft-ink); }
+  .ft .ft-base > .ft-choices { order: 1; align-self: flex-start; gap: 20px; padding-top: 20px; font-size: 16px; font-weight: 600; color: var(--ft-ink); }
+  .ft .ft-base > .ft-choices .ft-pc { order: 2; }
+  .ft .ft-base > .ft-agree { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft * { transition: none !important; }
+}
