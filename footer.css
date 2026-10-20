@@ -7,9 +7,10 @@
 
 /* ---------------------------------------------------------------- tokens */
 
-/* These values match the design mockups. When the footer goes into the
-   site, swap them for the site's own colours and font (its variables, or
-   the colours the current footer uses). */
+/* Placeholders from the design mockups. The footer's background and text
+   colours must match the website: when the footer goes into the site, set
+   these to the site's own colours and font (its variables, or the colours
+   the current footer uses). See AGENTS.md, step 2. */
 :root {
   --ft-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
 
