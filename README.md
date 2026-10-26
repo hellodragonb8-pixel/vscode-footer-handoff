@@ -11,7 +11,7 @@ The bottom line on desktop becomes Your Privacy Choices on the left, the license
 | 1 | Icon pill | System, Light and Dark icons in a rounded track (the mockup) |
 | 2 | Labeled pill | The same track with a word next to each icon |
 | 3 | Dark mode switch | One on/off switch; no way back to System once set |
-| 4 | Cycle button | One button that steps System → Light → Dark |
+| 4 | Theme menu | A button showing the current theme; it opens a menu of System, Light and Dark, like the site nav |
 | 5 | Select menu | A native select labelled Theme |
 | 6 | Text options | "Theme: System · Light · Dark" in the small print |
 | 7 | Appearance swatches | Three small theme previews, like an OS setting |

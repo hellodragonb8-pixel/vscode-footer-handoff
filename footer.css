@@ -26,6 +26,7 @@
   --ft-ctl-on: #d1d1d6;      /* selected theme option */
   --ft-ctl-ink: #5b5b5e;     /* theme control icons */
   --ft-ctl-ink-on: #1f1f1f;  /* selected theme icon */
+  --ft-menu-bg: #ffffff;     /* theme menu surface */
 
   /* Fixed colours of the official Your Privacy Choices icon. Do not map to site colours. */
   --pc-blue: #0066ff;
@@ -48,6 +49,7 @@
     --ft-ctl-on: #3c3c42;
     --ft-ctl-ink: #a8a8ad;
     --ft-ctl-ink-on: #ececee;
+    --ft-menu-bg: #232326;
     color-scheme: dark;
   }
 }
@@ -64,6 +66,7 @@
   --ft-ctl-on: #3c3c42;
   --ft-ctl-ink: #a8a8ad;
   --ft-ctl-ink-on: #ececee;
+  --ft-menu-bg: #232326;
   color-scheme: dark;
 }
 
@@ -152,9 +155,34 @@
 .ft .ft-switch[aria-checked="true"] { background: var(--ft-accent); }
 .ft .ft-switch[aria-checked="true"]::after { translate: 16px 0; }
 
-/* 4 Cycle button: one button that steps System, Light, Dark. */
-.ft .ft-cycle { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding-inline: 10px 12px; border-radius: 999px; background: var(--ft-ctl-bg); color: var(--ft-ctl-ink-on); }
-.ft .ft-cycle:hover { background: var(--ft-ctl-on); }
+/* 4 Theme menu: a button showing the current theme. It opens a menu upward,
+   since the footer sits at the bottom of the page. */
+.ft-menu-wrap { position: relative; }
+.ft .ft-menubtn { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding-inline: 10px 8px; border-radius: 999px; background: var(--ft-ctl-bg); color: var(--ft-ctl-ink-on); }
+.ft .ft-menubtn:hover, .ft .ft-menubtn[aria-expanded="true"] { background: var(--ft-ctl-on); }
+.ft-chev { width: 14px; height: 14px; color: var(--ft-ctl-ink); transition: rotate .15s ease; }
+.ft-menubtn[aria-expanded="true"] .ft-chev { rotate: 180deg; }
+.ft-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 10;
+  display: grid;
+  min-width: 152px;
+  padding: 4px;
+  border: 1px solid var(--ft-rule);
+  border-radius: 8px;
+  background: var(--ft-menu-bg);
+  box-shadow: 0 8px 24px rgb(0 0 0 / .14), 0 1px 3px rgb(0 0 0 / .08);
+}
+.ft-menu[hidden] { display: none; }
+.ft .ft-menu button { display: flex; align-items: center; gap: 10px; height: 32px; padding-inline: 10px; border-radius: 5px; color: var(--ft-ink); text-align: left; font-size: 13px; }
+.ft .ft-menu button:hover, .ft .ft-menu button:focus-visible { background: var(--ft-ctl-bg); outline: none; }
+.ft .ft-menu button span { flex: 1; }
+.ft .ft-menu button .ft-ti:first-child { color: var(--ft-ctl-ink); }
+.ft-check { visibility: hidden; color: var(--ft-accent); }
+.ft-menu [aria-checked="true"] .ft-check { visibility: visible; }
+.ft .ft-menu [aria-checked="true"] { font-weight: 600; }
 
 /* 5 Select menu: the native menu, with an icon for the current choice. */
 .ft-select { position: relative; display: inline-flex; align-items: center; color: var(--ft-ink); }
