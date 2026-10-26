@@ -6,7 +6,7 @@
 
 - **Desktop bottom line:** Your Privacy Choices on the left, the license agreement in the centre, the theme menu on the right.
 - **Legal column (desktop):** Privacy, Consumer Health Privacy, Terms of Use. On mobile, Consumer Health Privacy stays an always-visible row.
-- **Mobile:** the theme menu is the last row, labelled Theme.
+- **Mobile:** the theme menu button is the last row, on the left.
 - **The menu:** a button shows the current theme. Clicking it opens a menu above it with System, Light and Dark, the current one checked. It works with the keyboard (arrows, Home/End, Enter, Escape) and closes on a click elsewhere.
 - **How it works:** `theme.js` saves the choice in `localStorage` (`vscode-theme`) and sets `data-theme="light"` or `"dark"` on `<html>`; System removes the attribute so the OS decides. A one-line script in `<head>` applies a saved choice before first paint. Changes sync across tabs. Without JavaScript the menu stays hidden.
 
