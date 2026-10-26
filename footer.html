@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VS Code footer</title>
+  <!-- Theme: apply a saved choice before first paint (see theme.js). -->
+  <script>try{var t=localStorage.getItem("vscode-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
   <link rel="stylesheet" href="footer.css">
+  <script src="theme.js" defer></script>
   <!-- Demo page only: fills the window with the footer colour. Not part of the footer. -->
   <style>html, body { margin: 0; background: var(--ft-bg); }</style>
 </head>
@@ -44,6 +47,7 @@
           <h3 class="ft-h">Legal</h3>
           <ul class="ft-links" role="list" aria-label="Legal">
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy</a></li>
+            <li><a href="https://go.microsoft.com/fwlink/?linkid=2259814">Consumer Health Privacy</a></li>
             <li><a href="https://www.microsoft.com/legal/terms-of-use">Terms of Use</a></li>
           </ul>
         </section>
@@ -94,15 +98,29 @@
       </div>
     </div>
 
-    <!-- Desktop: one line (health link left, agreement centred, choices right).
-         Mobile: health and choices as rows; the agreement line is hidden. -->
+    <!-- Desktop: one line (Your Privacy Choices left, agreement centred, theme
+         menu right). Consumer Health Privacy is in the Legal column there.
+         Mobile: Consumer Health Privacy, Your Privacy Choices and the theme
+         menu as rows; the agreement line is hidden. -->
     <div class="ft-base">
       <a class="ft-health" href="https://go.microsoft.com/fwlink/?linkid=2259814">Consumer Health Privacy</a>
-      <p class="ft-agree">By using VS Code, you agree to its <a href="/License">license</a> and <a href="https://go.microsoft.com/fwlink/?LinkId=521839">privacy statement</a>.</p>
       <a class="ft-choices" href="https://aka.ms/yourcaliforniaprivacychoices">
         <svg class="ft-pc" viewBox="0 0 30 14" aria-hidden="true" focusable="false"><path fill="var(--pc-light)" d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"/><path fill="var(--pc-blue)" d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"/><path fill="var(--pc-light)" d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8s-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0s-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8s.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"/><path fill="var(--pc-blue)" d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8s.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"/></svg>
         <span>Your Privacy Choices</span>
       </a>
+      <p class="ft-agree">By using VS Code, you agree to its <a href="/License">license</a> and <a href="https://go.microsoft.com/fwlink/?LinkId=521839">privacy statement</a>.</p>
+      <!-- Theme menu. Hidden until theme.js runs; the button shows the current
+           theme and opens the menu upward. -->
+      <div class="ft-theme" hidden>
+        <div class="ft-menu-wrap">
+          <button type="button" class="ft-menubtn" aria-haspopup="menu" aria-expanded="false" aria-controls="ft-theme-menu" aria-label="Theme: System"><svg class="ft-ti" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.75" y="2.75" width="12.5" height="8.5" rx="1.5"/><path d="M8 11.25v2.5M5.25 13.75h5.5"/></svg><span>System</span></button>
+          <div class="ft-menu" id="ft-theme-menu" role="menu" aria-label="Theme" hidden>
+            <button type="button" role="menuitemradio" aria-checked="true" data-theme-option="system" tabindex="-1"><svg class="ft-ti" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="1.75" y="2.75" width="12.5" height="8.5" rx="1.5"/><path d="M8 11.25v2.5M5.25 13.75h5.5"/></svg><span>System</span><svg class="ft-ti ft-check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7"/></svg></button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="light" tabindex="-1"><svg class="ft-ti" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="2.75"/><path d="M8 1.5V3M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1.06 1.06M11.54 11.54l1.06 1.06M3.4 12.6l1.06-1.06M11.54 4.46l1.06-1.06"/></svg><span>Light</span><svg class="ft-ti ft-check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7"/></svg></button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-theme-option="dark" tabindex="-1"><svg class="ft-ti" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M13.25 9.6A5.5 5.5 0 0 1 6.4 2.75a5.5 5.5 0 1 0 6.85 6.85z"/></svg><span>Dark</span><svg class="ft-ti ft-check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3.5 8.5l3 3 6-7"/></svg></button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </footer>

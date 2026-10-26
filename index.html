@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VS Code Footer</title>
   <style>
-    /* Preview page only. The footer itself is footer.html + footer.css. */
+    /* Preview page only. The footer itself is footer.html + footer.css + theme.js. */
     :root {
       --pg-bg: #f7f7f8;
       --pg-ink: #1b1b1d;
@@ -33,14 +33,14 @@
     }
     .scroll { overflow-x: auto; border: 1px solid var(--pg-rule); border-radius: 10px; }
     iframe { display: block; border: 0; }
-    .desk iframe { width: 1280px; height: 420px; }
-    .mob iframe { width: 390px; max-width: 100%; height: 760px; border: 1px solid var(--pg-rule); border-radius: 10px; }
+    .desk iframe { width: 1280px; height: 400px; }
+    .mob iframe { width: 390px; max-width: 100%; height: 640px; border: 1px solid var(--pg-rule); border-radius: 10px; }
   </style>
 </head>
 <body>
   <header>
     <h1>VS Code footer</h1>
-    <p>The new footer at desktop width (1280&nbsp;px) and mobile width (390&nbsp;px). Both frames load <code>footer.html</code>, so this is the real markup and CSS. On mobile, tap a group to open it.</p>
+    <p>The new footer at desktop width (1280&nbsp;px) and mobile width (390&nbsp;px). Both frames load <code>footer.html</code>, so this is the real markup and CSS. On mobile, tap a group to open it. The theme menu works: pick a theme in either frame and both follow.</p>
   </header>
   <div class="views">
     <figure class="desk">
