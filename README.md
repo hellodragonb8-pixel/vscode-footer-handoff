@@ -1,5 +1,23 @@
 # VS Code website footer
 
+> **Branch `theme-switcher`: exploration, not the handoff.** This branch adds a System / Light / Dark theme switcher to the footer and compares seven ways to show it. Open `index.html` to see them. The handoff the builder uses is on `main`.
+
+## Theme switcher options (this branch)
+
+The bottom line on desktop becomes Your Privacy Choices on the left, the license agreement in the centre and the theme switcher on the right. Consumer Health Privacy moves into the Legal column on desktop; on mobile it stays an always-visible row. On mobile the switcher is the last row.
+
+| # | Option | What it is |
+| --- | --- | --- |
+| 1 | Icon pill | System, Light and Dark icons in a rounded track (the mockup) |
+| 2 | Labeled pill | The same track with a word next to each icon |
+| 3 | Dark mode switch | One on/off switch; no way back to System once set |
+| 4 | Cycle button | One button that steps System → Light → Dark |
+| 5 | Select menu | A native select labelled Theme |
+| 6 | Text options | "Theme: System · Light · Dark" in the small print |
+| 7 | Appearance swatches | Three small theme previews, like an OS setting |
+
+How it works: `theme.js` saves the choice in `localStorage` (`vscode-theme`) and sets `data-theme="light"` or `"dark"` on `<html>`; System removes the attribute so the OS decides. A one-line script in `<head>` applies a saved choice before first paint. Changes sync across tabs. `footer.html?v=1` to `?v=7` picks the option; once the team chooses one, its markup goes into `footer.html` and the rest is removed.
+
 The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout, and takes on the site's own colours and type.
 
 **Replacing the footer with a coding agent?** Point the agent at [AGENTS.md](AGENTS.md). It has step-by-step instructions and a checklist.

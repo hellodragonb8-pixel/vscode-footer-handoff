@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VS Code footer</title>
+  <!-- Theme: apply a saved choice before first paint (see theme.js). -->
+  <script>try{var t=localStorage.getItem("vscode-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
   <link rel="stylesheet" href="footer.css">
+  <script src="theme.js" defer></script>
   <!-- Demo page only: fills the window with the footer colour. Not part of the footer. -->
   <style>html, body { margin: 0; background: var(--ft-bg); }</style>
 </head>
@@ -45,6 +48,7 @@
           <ul class="ft-links" role="list" aria-label="Legal">
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy</a></li>
             <li><a href="https://www.microsoft.com/legal/terms-of-use">Terms of Use</a></li>
+            <li><a href="https://go.microsoft.com/fwlink/?linkid=2259814">Consumer Health Privacy</a></li>
           </ul>
         </section>
         <section class="ft-col">
@@ -94,15 +98,19 @@
       </div>
     </div>
 
-    <!-- Desktop: one line (health link left, agreement centred, choices right).
-         Mobile: health and choices as rows; the agreement line is hidden. -->
+    <!-- Desktop: one line (Your Privacy Choices left, agreement centred, theme
+         switcher right). Consumer Health Privacy is in the Legal column there.
+         Mobile: Consumer Health Privacy, Your Privacy Choices and the theme
+         switcher as rows; the agreement line is hidden. -->
     <div class="ft-base">
       <a class="ft-health" href="https://go.microsoft.com/fwlink/?linkid=2259814">Consumer Health Privacy</a>
-      <p class="ft-agree">By using VS Code, you agree to its <a href="/License">license</a> and <a href="https://go.microsoft.com/fwlink/?LinkId=521839">privacy statement</a>.</p>
       <a class="ft-choices" href="https://aka.ms/yourcaliforniaprivacychoices">
         <svg class="ft-pc" viewBox="0 0 30 14" aria-hidden="true" focusable="false"><path fill="var(--pc-light)" d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"/><path fill="var(--pc-blue)" d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"/><path fill="var(--pc-light)" d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8s-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0s-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8s.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"/><path fill="var(--pc-blue)" d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8s.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"/></svg>
         <span>Your Privacy Choices</span>
       </a>
+      <p class="ft-agree">By using VS Code, you agree to its <a href="/License">license</a> and <a href="https://go.microsoft.com/fwlink/?LinkId=521839">privacy statement</a>.</p>
+      <!-- Theme switcher, drawn by theme.js. -->
+      <div class="ft-theme" data-theme-slot></div>
     </div>
   </div>
 </footer>

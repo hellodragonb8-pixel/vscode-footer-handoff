@@ -1,5 +1,7 @@
 # Agent instructions: replace the VS Code website footer
 
+> **Stop if you are on branch `theme-switcher`.** It is a design exploration and these instructions do not cover it yet. Use the `main` branch.
+
 Your task is to replace the footer on the VS Code website (code.visualstudio.com) with the footer in this repository. Work in the website's codebase. Use this repository as the reference.
 
 **Requirement: the footer's background colour and text colour must match the existing website.** The colours in `footer.css` are placeholders from the design mockups. You will look up the site's real colours in step 2 and apply them in step 5.

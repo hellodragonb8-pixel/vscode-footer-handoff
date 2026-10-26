@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VS Code Footer</title>
+  <title>Footer Theme Options</title>
   <style>
-    /* Preview page only. The footer itself is footer.html + footer.css. */
+    /* Preview page only. The footer itself is footer.html + footer.css + theme.js. */
     :root {
       --pg-bg: #f7f7f8;
       --pg-ink: #1b1b1d;
@@ -21,8 +21,14 @@
       font: 14px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
     }
     h1 { margin: 0; font-size: 22px; font-weight: 600; }
-    header p { margin: 4px 0 32px; color: var(--pg-muted); max-width: 70ch; }
-    .views { display: grid; gap: 32px; }
+    header p { margin: 4px 0 0; color: var(--pg-muted); max-width: 80ch; }
+    main { display: grid; gap: 64px; margin-top: 40px; }
+    section { min-width: 0; }
+    h2 { margin: 0; font-size: 17px; font-weight: 600; }
+    h2 span { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; color: var(--pg-muted); margin-right: 8px; }
+    section > p { margin: 2px 0 14px; color: var(--pg-muted); max-width: 80ch; }
+    .views { display: grid; gap: 20px; align-items: start; }
+    @media (min-width: 1760px) { .views { grid-template-columns: minmax(0, 1fr) 392px; } }
     figure { margin: 0; min-width: 0; }
     figcaption {
       margin-bottom: 8px;
@@ -33,24 +39,43 @@
     }
     .scroll { overflow-x: auto; border: 1px solid var(--pg-rule); border-radius: 10px; }
     iframe { display: block; border: 0; }
-    .desk iframe { width: 1280px; height: 420px; }
-    .mob iframe { width: 390px; max-width: 100%; height: 760px; border: 1px solid var(--pg-rule); border-radius: 10px; }
+    .desk iframe { width: 1280px; height: 400px; }
+    .mob iframe { width: 390px; max-width: 100%; height: 640px; border: 1px solid var(--pg-rule); border-radius: 10px; }
   </style>
+  <script src="theme.js"></script>
 </head>
 <body>
   <header>
-    <h1>VS Code footer</h1>
-    <p>The new footer at desktop width (1280&nbsp;px) and mobile width (390&nbsp;px). Both frames load <code>footer.html</code>, so this is the real markup and CSS. On mobile, tap a group to open it.</p>
+    <h1>Footer theme switcher: seven options</h1>
+    <p>Each option shows the full footer at desktop width (1280&nbsp;px) and mobile width (390&nbsp;px). The switchers work: pick a theme in any frame and every frame follows, because they share one saved setting. System follows your OS setting.</p>
   </header>
-  <div class="views">
-    <figure class="desk">
-      <figcaption>Desktop · 1280</figcaption>
-      <div class="scroll"><iframe src="footer.html" title="Footer at desktop width"></iframe></div>
-    </figure>
-    <figure class="mob">
-      <figcaption>Mobile · 390</figcaption>
-      <iframe src="footer.html" title="Footer at mobile width"></iframe>
-    </figure>
-  </div>
+  <main id="options"></main>
+  <script>
+    const NOTES = {
+      1: 'Three icons (System, Light, Dark) in a rounded track, as in the mockup. Compact; relies on the icons and their tooltips.',
+      2: 'The same track with a word next to each icon. Clearer, a little wider.',
+      3: 'One on/off switch labelled Dark mode. Simplest choice; until someone flips it, it shows what the OS is using, and there is no way back to System once set.',
+      4: 'One button that shows the current theme and steps System → Light → Dark on each click. Smallest footprint; you only see one option at a time.',
+      5: 'A native select labelled Theme, with an icon for the current choice. Familiar and fully accessible; opens the browser’s own menu.',
+      6: 'The three choices written out in the small print: “Theme: System · Light · Dark”. Quietest option; reads like the links around it.',
+      7: 'Three small previews of the theme, like an OS appearance setting. Very visual; names appear on hover and to screen readers.',
+    };
+    const VARIANTS = window.FT_THEME.VARIANTS;
+    document.getElementById('options').innerHTML = Object.keys(VARIANTS).map((n) => `
+      <section aria-labelledby="o${n}">
+        <h2 id="o${n}"><span>${n}</span>${VARIANTS[n].name}</h2>
+        <p>${NOTES[n]}</p>
+        <div class="views">
+          <figure class="desk">
+            <figcaption>Desktop · 1280</figcaption>
+            <div class="scroll"><iframe src="footer.html?v=${n}" title="Option ${n}, desktop width" loading="lazy"></iframe></div>
+          </figure>
+          <figure class="mob">
+            <figcaption>Mobile · 390</figcaption>
+            <iframe src="footer.html?v=${n}" title="Option ${n}, mobile width" loading="lazy"></iframe>
+          </figure>
+        </div>
+      </section>`).join('');
+  </script>
 </body>
 </html>
