@@ -22,10 +22,10 @@
   --ft-rule-strong: #b6b6ba; /* underline on links inside the agreement line */
   --ft-accent: #005fb8;      /* link hover */
   --ft-focus: #005fb8;       /* keyboard focus ring */
-  --ft-ctl-bg: #e4e4e7;      /* theme control track */
-  --ft-ctl-on: #d1d1d6;      /* selected theme option */
-  --ft-ctl-ink: #5b5b5e;     /* theme control icons */
-  --ft-ctl-ink-on: #1f1f1f;  /* selected theme icon */
+  --ft-ctl-bg: #e4e4e7;      /* theme button, menu item hover */
+  --ft-ctl-on: #d1d1d6;      /* theme button hover and open */
+  --ft-ctl-ink: #5b5b5e;     /* theme menu icons */
+  --ft-ctl-ink-on: #1f1f1f;  /* theme button text */
   --ft-menu-bg: #ffffff;     /* theme menu surface */
 
   /* Fixed colours of the official Your Privacy Choices icon. Do not map to site colours. */
@@ -33,7 +33,7 @@
   --pc-light: #ffffff;
 }
 
-/* Dark values. The theme switcher sets data-theme="light" or "dark" on <html>;
+/* Dark values. The theme menu sets data-theme="light" or "dark" on <html>;
    with no attribute (System), the OS setting decides. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -122,7 +122,7 @@
 .ft .ft-links a { color: var(--ft-ink-soft); }
 
 /* One bottom line: Your Privacy Choices on the left, the agreement centred,
-   the theme switcher on the right. On desktop Consumer Health Privacy sits
+   the theme menu on the right. On desktop Consumer Health Privacy sits
    in the Legal column, so its bottom-line copy is mobile only. */
 .ft .ft-base { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px 40px; margin-top: 112px; }
 .ft .ft-base > .ft-health { display: none; }
@@ -130,38 +130,21 @@
 .ft .ft-base > .ft-agree { grid-column: 2; grid-row: 1; }
 .ft .ft-base > .ft-theme { grid-column: 3; grid-row: 1; justify-self: end; }
 
-/* ---------------------------------------------------------- theme switcher */
+/* ------------------------------------------------------------ theme menu */
 
-/* The slot that holds the switcher. Its text label shows on mobile, and on
-   desktop only for the options that read as words (.ft-theme--label). */
+/* A button showing the current theme. It opens a menu upward, since the
+   footer sits at the bottom of the page. theme.js shows it (it is hidden
+   without JavaScript) and handles the menu. */
 .ft-theme { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--ft-muted); }
+.ft .ft-theme[hidden] { display: none; }
 .ft-theme-label { display: none; }
-.ft-theme--label .ft-theme-label { display: block; }
-.ft-theme button, .ft-theme select { font: inherit; color: inherit; margin: 0; }
-.ft-theme button { background: none; border: 0; padding: 0; cursor: pointer; }
-.ft-theme button:focus-visible, .ft-theme select:focus-visible { outline: 2px solid var(--ft-focus); outline-offset: 2px; }
+.ft-theme button { font: inherit; color: inherit; margin: 0; background: none; border: 0; padding: 0; cursor: pointer; }
+.ft-theme button:focus-visible { outline: 2px solid var(--ft-focus); outline-offset: 2px; }
 .ft-ti { display: block; width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
 
-/* 1 Icon pill and 2 Labeled pill: three options in a rounded track. */
-.ft .ft-seg { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--ft-ctl-bg); }
-.ft .ft-seg button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 32px; height: 26px; border-radius: 999px; color: var(--ft-ctl-ink); }
-.ft .ft-seg button:hover { color: var(--ft-ctl-ink-on); }
-.ft .ft-seg button[aria-checked="true"] { background: var(--ft-ctl-on); color: var(--ft-ctl-ink-on); }
-.ft .ft-seg--labels button { width: auto; padding-inline: 10px; }
-
-/* 3 Dark mode switch: one on/off control. */
-.ft .ft-switch { position: relative; width: 36px; height: 20px; border-radius: 999px; background: var(--ft-ctl-on); transition: background .15s ease; }
-.ft .ft-switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / .3); transition: translate .15s ease; }
-.ft .ft-switch[aria-checked="true"] { background: var(--ft-accent); }
-.ft .ft-switch[aria-checked="true"]::after { translate: 16px 0; }
-
-/* 4 Theme menu: a button showing the current theme. It opens a menu upward,
-   since the footer sits at the bottom of the page. */
 .ft-menu-wrap { position: relative; }
-.ft .ft-menubtn { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding-inline: 10px 8px; border-radius: 999px; background: var(--ft-ctl-bg); color: var(--ft-ctl-ink-on); }
+.ft .ft-menubtn { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding-inline: 10px 12px; border-radius: 999px; background: var(--ft-ctl-bg); color: var(--ft-ctl-ink-on); }
 .ft .ft-menubtn:hover, .ft .ft-menubtn[aria-expanded="true"] { background: var(--ft-ctl-on); }
-.ft-chev { width: 14px; height: 14px; color: var(--ft-ctl-ink); transition: rotate .15s ease; }
-.ft-menubtn[aria-expanded="true"] .ft-chev { rotate: 180deg; }
 .ft-menu {
   position: absolute;
   right: 0;
@@ -183,27 +166,6 @@
 .ft-check { visibility: hidden; color: var(--ft-accent); }
 .ft-menu [aria-checked="true"] .ft-check { visibility: visible; }
 .ft .ft-menu [aria-checked="true"] { font-weight: 600; }
-
-/* 5 Select menu: the native menu, with an icon for the current choice. */
-.ft-select { position: relative; display: inline-flex; align-items: center; color: var(--ft-ink); }
-.ft-select > .ft-ti { position: absolute; left: 8px; pointer-events: none; }
-.ft-select::after { content: ""; position: absolute; right: 10px; width: 6px; height: 6px; border-right: 1.3px solid currentColor; border-bottom: 1.3px solid currentColor; rotate: 45deg; translate: 0 -2px; pointer-events: none; }
-.ft .ft-select select { appearance: none; height: 28px; padding: 0 28px 0 30px; border: 1px solid var(--ft-rule-strong); border-radius: 6px; background: var(--ft-bg); cursor: pointer; }
-
-/* 6 Text options: the choices written out in the small print. */
-.ft .ft-text { display: inline-flex; align-items: center; }
-.ft .ft-text button + button::before { content: "·"; margin-inline: 8px; color: var(--ft-muted); }
-.ft .ft-text button:hover { color: var(--ft-ink); }
-.ft .ft-text button[aria-checked="true"] { color: var(--ft-ink); font-weight: 600; }
-
-/* 7 Appearance swatches: small previews of each theme, like an OS setting. */
-.ft .ft-swatches { display: inline-flex; gap: 8px; }
-.ft .ft-swatches button { display: block; padding: 2px; border-radius: 6px; border: 1px solid transparent; }
-.ft .ft-swatches button[aria-checked="true"] { border-color: var(--ft-accent); }
-.ft-sw { display: block; width: 30px; height: 20px; border-radius: 4px; border: 1px solid var(--ft-rule-strong); background-clip: padding-box; }
-.ft-sw--light { background: linear-gradient(#fff 0 0) 5px 5px / 14px 3px no-repeat, #f3f3f3; }
-.ft-sw--dark { background: linear-gradient(#5a5a60 0 0) 5px 5px / 14px 3px no-repeat, #1f1f22; }
-.ft-sw--system { background: linear-gradient(135deg, #f3f3f3 50%, #1f1f22 50%); }
 
 /* ---------------------------------------------------------------- mobile */
 
@@ -247,11 +209,9 @@
   .ft .ft-base > .ft-choices .ft-pc { order: 2; }
   .ft .ft-base > .ft-agree { display: none; }
 
-  /* The theme switcher is the last row: its label on the left, the control on the right. */
+  /* The theme menu is the last row: its label on the left, the button on the right. */
   .ft .ft-base > .ft-theme { order: 2; justify-content: space-between; padding-top: 16px; }
   .ft .ft-theme-label { display: block; font-size: 16px; font-weight: 600; color: var(--ft-ink); }
-  .ft .ft-seg button { width: 40px; height: 32px; }
-  .ft .ft-seg--labels button { width: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {

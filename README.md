@@ -1,22 +1,14 @@
 # VS Code website footer
 
-> **Branch `theme-switcher`: exploration, not the handoff.** This branch adds a System / Light / Dark theme switcher to the footer and compares seven ways to show it. Open `index.html` to see them. The handoff the builder uses is on `main`.
+> **Branch `theme-switcher`: work in progress, not the handoff yet.** This branch adds a theme menu (System, Light, Dark) to the footer. The handoff the builder uses is on `main`.
 
-## Theme switcher options (this branch)
+## Theme menu (this branch)
 
-The bottom line on desktop becomes Your Privacy Choices on the left, the license agreement in the centre and the theme switcher on the right. Consumer Health Privacy moves into the Legal column on desktop; on mobile it stays an always-visible row. On mobile the switcher is the last row.
-
-| # | Option | What it is |
-| --- | --- | --- |
-| 1 | Icon pill | System, Light and Dark icons in a rounded track (the mockup) |
-| 2 | Labeled pill | The same track with a word next to each icon |
-| 3 | Dark mode switch | One on/off switch; no way back to System once set |
-| 4 | Theme menu | A button showing the current theme; it opens a menu of System, Light and Dark, like the site nav |
-| 5 | Select menu | A native select labelled Theme |
-| 6 | Text options | "Theme: System · Light · Dark" in the small print |
-| 7 | Appearance swatches | Three small theme previews, like an OS setting |
-
-How it works: `theme.js` saves the choice in `localStorage` (`vscode-theme`) and sets `data-theme="light"` or `"dark"` on `<html>`; System removes the attribute so the OS decides. A one-line script in `<head>` applies a saved choice before first paint. Changes sync across tabs. `footer.html?v=1` to `?v=7` picks the option; once the team chooses one, its markup goes into `footer.html` and the rest is removed.
+- **Desktop bottom line:** Your Privacy Choices on the left, the license agreement in the centre, the theme menu on the right.
+- **Legal column (desktop):** Privacy, Consumer Health Privacy, Terms of Use. On mobile, Consumer Health Privacy stays an always-visible row.
+- **Mobile:** the theme menu is the last row, labelled Theme.
+- **The menu:** a button shows the current theme. Clicking it opens a menu above it with System, Light and Dark, the current one checked. It works with the keyboard (arrows, Home/End, Enter, Escape) and closes on a click elsewhere.
+- **How it works:** `theme.js` saves the choice in `localStorage` (`vscode-theme`) and sets `data-theme="light"` or `"dark"` on `<html>`; System removes the attribute so the OS decides. A one-line script in `<head>` applies a saved choice before first paint. Changes sync across tabs. Without JavaScript the menu stays hidden.
 
 The new footer for the VS Code website (code.visualstudio.com), ready to replace the current one. It has a desktop layout and a mobile layout, and takes on the site's own colours and type.
 
@@ -37,12 +29,13 @@ Open `index.html` in a browser. It shows the footer at 1280 px and at 390 px sid
 ```
 footer.html   the footer markup, between FOOTER START / FOOTER END comments
 footer.css    all footer styles: colour and font tokens, desktop layout, mobile layout
+theme.js      the theme menu: saves the choice and applies it
 index.html    preview page (desktop and mobile frames); not part of the footer
 images/       reference renders of the new footer, and a screenshot of the current one
 AGENTS.md     instructions for replacing the current footer on the site
 ```
 
-`footer.html` and `footer.css` are the whole footer. It needs no JavaScript.
+`footer.html`, `footer.css` and `theme.js` are the whole footer. Only the theme menu needs JavaScript.
 
 ## Design
 
